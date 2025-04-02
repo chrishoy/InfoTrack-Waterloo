@@ -12,30 +12,30 @@ The provided application simply returns a list of fixed positions.
 
 ## Project Structure
 - `Waterloo.Web` - This is the Presentation Layer - Contains
-	a) Contracts - requests/responses
-	a) Endpoints - API Mapping (using Minimal API's - could be controller endpoints)
+  1. Contracts - requests/responses
+  1. Endpoints - API Mapping (using Minimal API's - could be controller endpoints)
 - `Waterloo.Application` - Currently only contains Command and Handler and Validator, but could contain
-	a) Commands - Commands to perform actions
-	b) Queries - Queries to get data
-	c) Handlers - Command and Query Handlers
-	d) Validators - Validation for Commands and Queries
-	e) Pipeline Behaviours - Cross cutting concerns
+  1. Commands - Commands to perform actions
+  1. Queries - Queries to get data
+  1. Handlers - Command and Query Handlers
+  1. Validators - Validation for Commands and Queries
+  1. Pipeline Behaviours - Cross cutting concerns
 - `Waterloo.Domain` - Currently anaemic, but could contain
-	a) Entities - Business Objects
-	b) Value Objects - Objects that have no identity
-	c) Services - Business Logic`
+  1. Entities - Business Objects
+  1. Value Objects - Objects that have no identity
+  1. Services - Business Logic`
 - `Waterloo.Infrastructure` - Currently only contains infra to access Google, but could be used to genericise all HTTP requests (scrapes). Other things here would include..
-	a) Data - Data Access Layer
-	b) Services - External Services
-	c) Logging - Logging
-	d) Messaging - Messaging
-	e) Caching - Caching`
+  1. Data - Data Access Layer
+  1. Services - External Services
+  1. Logging - Logging
+  1. Messaging - Messaging
+  1. Caching - Caching`
 - `Waterloo.SharedKernel` - Contains shared code across the application
-	a) Constants - Constants
-	b) Exceptions - Exceptions
-	c) Extensions - Extensions
-	d) Interfaces - Interfaces
-	e) Utilities - Utilities
+  1. Constants - Constants
+  1. Exceptions - Exceptions
+  1. Extensions - Extensions
+  1. Interfaces - Interfaces
+  1. Utilities - Utilities
 	
 Each project is responsible for it's own dependencies/registrations and has a clear separation of concerns.
 
