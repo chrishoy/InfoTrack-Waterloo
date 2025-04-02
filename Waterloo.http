@@ -1,0 +1,35 @@
+@Server_HostAddress = https://localhost:7198
+
+# Example Scrape returns positions
+
+# @name scrape
+POST {{Server_HostAddress}}/scrape
+Accept: */*
+Content-Type: application/json 
+{
+  "targetUrl": "www.infotrack.co.uk",
+  "keywords": "land registry searches"
+}
+###
+
+# Example of Validation - Missing keywords
+
+POST {{Server_HostAddress}}/scrape
+Accept: */*
+Content-Type: application/json 
+{
+  "targetUrl": "www.infotrack.co.uk",
+  "keywords": ""
+}
+###
+
+# Example of Validation - Missing targeturl
+
+POST {{Server_HostAddress}}/scrape
+Accept: */*
+Content-Type: application/json 
+{
+  "targetUrl": "www.infotrack.co.uk",
+  "keywords": ""
+}
+###
