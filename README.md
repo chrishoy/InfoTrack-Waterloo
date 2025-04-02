@@ -3,9 +3,12 @@
 ## Introduction
 Simple .NET 8 React SPA that was put together as a framework into which a web scraping service could be added.
 Unfortunately, I didn't have time to implement the scraping, but I have implemented the structure of the application.
-It very quickly became evident to me that Google Search doesn't like scraping and I would need to use a headless browser, or other means, to get around this.
-Google Search is now extremely JavaScript heavy and very obfuscated, even using attempts at supplying HTTP headers, e.g. requesting results for a text-only browser, resulting in failure.
-I suspect this is a deliberate attempt to thwart users who scrape Google Search results, and instead force them to use paid services such as is provided as part of GCP subscriptions. 
+It very quickly became evident to me that Google Search doesn't like scraping and I would need to use a sophisticated headless browser, or other means, to get around this.
+As the spec required no use of 3rd party libraries or the Google API this proved to me unmanagemable within the timescale, although I would be very happy if someone were to provide me with a solution!
+The returned payload is now extremely JavaScript heavy and obfuscated (look at search result source). You can't simply query the HTML or load into DOM.
+Even using the likes of Pupeteer or Selenium WebDriver will not work as expected and attempts at supplying HTTP headers,
+e.g. requesting results for a text-only browser, will leave you blocked by indirection and invariably result in failure.
+I suspect this is a deliberate attempt to thwart users who try to scrape Google Search results, and instead force them to use paid services such as is provided as part of GCP subscriptions and Google API. 
 A quick (Yahoo and Bing Ha!) search confirmed this theory to me so I didn't pursue it further.
 
 The provided application simply returns a list of fixed positions.
