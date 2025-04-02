@@ -26,6 +26,6 @@ app.MapFallbackToFile("/index.html");
 app.UseRequestContextLogging();
 app.UseSerilogRequestLogging();
 app.UseExceptionHandler();
-app.UseCors("AllowSpecificOrigins");
+app.UseCors("AllowAll");
 
 app.Run();
