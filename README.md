@@ -18,7 +18,7 @@ The provided application simply returns a list of fixed positions.
 - Go to folder where `Waterloo.Server.csproj` is located (i.e. `./Waterloo.Server`)
 - Run `dotnet build`
 - Run `dotnet run`
-  1. Should start the Web API on `http://localhost:5166
+  1. Should start the Web API on `http://localhost:5166`
   1. Should start the SPA Development Server on `https://localhost:51048/`
 
 You should now be able to browse to `https://localhost:51048` and see the application running.
