@@ -1,4 +1,5 @@
-@Server_HostAddress = https://localhost:7198
+#@Server_HostAddress = https://localhost:7198
+@Server_HostAddress = http://localhost:5166
 
 # Example Scrape returns positions
 

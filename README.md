@@ -10,6 +10,23 @@ A quick (Yahoo and Bing Ha!) search confirmed this theory to me so I didn't purs
 
 The provided application simply returns a list of fixed positions.
 
+## Getting Started
+- Clone the repository
+- Open the solution in Visual Studio 2022
+- Run the application
+
+Alternatively, you can run the application from the command line using the following commands:
+- Server
+  1. Go to directly where `Waterloo.Server.csproj` is located (i.e. `Waterloo.Server`)
+  1. Run `dotnet build`
+  1. Run `dotnet run` - Should start the Web API on `http://localhost:5166`
+
+- Client
+  1. Go to folder `waterloo.client`
+  1. Run `npm run dev`
+
+This should start `Vite`, you should now be able to browse to `https://localhost:51049` and see the application running.
+
 ## Project Structure
 - `Waterloo.Web` - This is the Presentation Layer - Contains
   1. Contracts - requests/responses
