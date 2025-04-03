@@ -46,8 +46,9 @@ export default function App() {
             <p>Search <a href='https://www.google.co.uk'>Google</a> to find positions of target URL.</p>
             <div className="flex w-full space-x-2">
                 <div className="flex flex-grow flex-col">
-                    <label className="mb-1 font-medium">Target URL</label>
+                    <label htmlFor="targetUrl" className="mb-1 font-medium">Target URL</label>
                     <input
+                        id="targetUrl"
                         type="text"
                         value={targetUrl}
                         onChange={(e) => setTargetUrl(e.target.value)}
@@ -55,8 +56,9 @@ export default function App() {
                     />
                 </div>
                 <div className="flex flex-grow flex-col">
-                    <label className="mb-1 font-medium">Keywords</label>
+                    <label htmlFor="keywords" className="mb-1 font-medium">Keywords</label>
                     <input
+                        id="keywords"
                         type="text"
                         value={keywords}
                         onChange={(e) => setKeywords(e.target.value)}
@@ -71,15 +73,16 @@ export default function App() {
                         onClick={handleScrape}
                         disabled={isScraping}
                         busy={isScraping}
-                        className={`w-60 h-full p-2 rounded-lg ${isScraping ? "bg-gray-500" : "bg-blue-500 hover:bg-blue-600"}`}
+                        className={`w-100 h-full p-2 rounded-lg ${isScraping ? "bg-gray-500" : "bg-blue-500 hover:bg-blue-600"}`}
                     >
-                        Click here to scrape...
+                        Click here to perform keywords search...
                     </AnimatedButton>
                 </div>
             </div>
             {!error && located && (<div className="w-full">
-                <label className="mb-1 block font-medium">Positions where Target URL found</label>
+                <label htmlFor="located" className="mb-1 block font-medium">Positions where Target URL found</label>
                 <input
+                    id="located"
                     type="text"
                     value={located}
                     readOnly

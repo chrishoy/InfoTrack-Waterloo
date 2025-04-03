@@ -47,6 +47,7 @@ export default defineConfig({
         }
     },
     server: {
+        open: false, // Prevents Vite from opening the browser
         proxy: {
             '^/scrape': {
                 target,
