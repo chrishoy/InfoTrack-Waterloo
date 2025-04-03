@@ -2,11 +2,12 @@
 
 ## Introduction
 Simple .NET 8 React SPA that was put together as a framework into which a web scraping service could be added.
-Unfortunately, I didn't have time to implement the scraping, but I have implemented the structure of the application.
-It very quickly became evident to me that Google Search doesn't like scraping and I would need to use a sophisticated headless browser, or other means, to get around this.
-As the spec required no use of 3rd party libraries or the Google API this proved to me unmanagemable within the timescale, although I would be very happy if someone were to provide me with a solution!
-The returned payload is now extremely JavaScript heavy and obfuscated (look at search result source). You can't simply query the HTML or load into DOM.
-Even using the likes of Pupeteer or Selenium WebDriver will not work as expected and attempts at supplying HTTP headers,
+Unfortunately, I didn't have time to implement the scraping, but I have implemented the structure of the application, including
+strategies for building url, and parsing response from the returned HTML. There are also config entries to set Google and Bing url, headers etc.
+It quickly became evident that Google Search doesn't like scraping and I would need to use a headless browser, with plugins or other means, to get around this.
+As the spec required **no use of 3rd party libraries or the Google API** this proved to me unmanageable within the timescale, although I would be very happy if someone were to provide me with a solution!
+The returned payload is now extremely JavaScript heavy and obfuscated (look at search result source - breakpoint `GenericScrapeService.ScrapeSearchEngine` - line 40 and inspect 'content').
+You can't simply query the HTML or load into DOM, even using the likes of Pupeteer or Selenium WebDriver will not work as expected and attempts at supplying HTTP headers,
 e.g. requesting results for a text-only browser, will leave you blocked by indirection and invariably result in failure.
 I suspect this is a deliberate attempt to thwart users who try to scrape Google Search results, and instead force them to use paid services such as is provided as part of GCP subscriptions and Google API. 
 A quick (Yahoo and Bing Ha!) search confirmed this theory to me so I didn't pursue it further.
@@ -15,13 +16,18 @@ The provided application simply returns a list of fixed positions.
 
 ## Getting Started
 - Clone the repository
-- Go to folder where `Waterloo.Server.csproj` is located (i.e. `./Waterloo.Server`)
-- Run `dotnet build`
-- Run `dotnet run`
+- If running with VS Code
+  1. Select 'RUN AND DEBUG' > 'Launch Debug'
+  1. Wait for SPA to run
+  1. Try search Target URL:'Google' and Keywords: 'Google' to prove it is reaching out
+- If running without VS Code
+  1. Go to folder where `Waterloo.Server.csproj` is located (i.e. `./Waterloo.Server`)
+  1. Open PowerShell
+  1. Execute `dotnet build`
+  1. Execute `dotnet run`
   1. Should start the Web API on `http://localhost:5166`
   1. Should start the SPA Development Server on `https://localhost:51048/`
-
-You should now be able to browse to `https://localhost:51048` and see the application running.
+  1. Browse to `https://localhost:51048` to see the application running.
 
 ## Project Structure
 - `Waterloo.Web` - This is the Presentation Layer - Contains

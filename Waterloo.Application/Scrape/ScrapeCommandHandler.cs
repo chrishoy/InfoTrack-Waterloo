@@ -15,12 +15,10 @@ internal sealed class ScrapeCommandHandler : ICommandHandler<ScrapeCommand, Scra
 
     public async Task<Result<ScrapeCommandResponse>> Handle(ScrapeCommand request, CancellationToken cancellationToken)
     {
-        // Use default search engine (Google) and max results (100)
+        // Use default values from the service (which will use configuration)
         var result = await _scrapeService.ScrapeSearchEngine(
             request.TargetUrl, 
             request.Keywords,
-            searchEngine: "Google", 
-            maxResults: 100, 
             ct: cancellationToken);
             
         ScrapeCommandResponse response = new ScrapeCommandResponse
