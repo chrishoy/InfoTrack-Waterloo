@@ -3,16 +3,18 @@
 ## Introduction
 Simple .NET 8 React SPA that was put together as a framework into which a web scraping service could be added.
 Unfortunately, I didn't have time to implement the scraping, but I have implemented the structure of the application, including
-strategies for building url, and parsing response from the returned HTML. There are also config entries to set Google and Bing url, headers etc.
+strategies for building url, and parsing response from the returned HTML. There are also config entries to set **Google** and **Bing url**, headers etc.
 It quickly became evident that Google Search doesn't like scraping and I would need to use a headless browser, with plugins or other means, to get around this.
 As the spec required **no use of 3rd party libraries or the Google API** this proved to me unmanageable within the timescale, although I would be very happy if someone were to provide me with a solution!
-The returned payload is now extremely JavaScript heavy and obfuscated (look at search result source - breakpoint `GenericScrapeService.ScrapeSearchEngine` - line 40 and inspect 'content').
+The returned payload is now extremely JavaScript heavy and obfuscated (look at search result source - breakpoint `GenericScrapeService.ScrapeSearchEngine` - line 40 and inspect `content`).
 You can't simply query the HTML or load into DOM, even using the likes of Pupeteer or Selenium WebDriver will not work as expected and attempts at supplying HTTP headers,
 e.g. requesting results for a text-only browser, will leave you blocked by indirection and invariably result in failure.
-I suspect this is a deliberate attempt to thwart users who try to scrape Google Search results, and instead force them to use paid services such as is provided as part of GCP subscriptions and Google API. 
+
+**I suspect this is a deliberate attempt to thwart users who try to scrape Google Search results, and instead force them to use paid services such as is provided as part of GCP subscriptions and Google API.** 
+
 A quick (Yahoo and Bing Ha!) search confirmed this theory to me so I didn't pursue it further.
 
-The provided application simply returns a list of fixed positions.
+The provided application simply returns a list of parse line matches, so if you try entering Target URL: 'Google' and Keywords: 'Google' you will get something, but try searching 'www.infotract.co.uk' and 'land registry seraches', you will get nothing due to the redirection and obfuscation.
 
 ## Getting Started
 - Clone the repository
