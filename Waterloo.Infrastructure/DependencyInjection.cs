@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Waterloo.Application.Abstractions.Services;
-using Waterloo.Infrastructure.Services;
+using Waterloo.Infrastructure.Search;
 
 namespace Waterloo.Infrastructure;
 
@@ -11,21 +11,33 @@ public static class DependencyInjection
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        var searchUrl = configuration["SearchUrl"]!; // Fetch search endpoint (i.e. Google) from appsettings.json
-
-        // Add HttpClient which will be used to perform search
-        services.AddHttpClient("SearchEngine", client =>
-        {
-            client.BaseAddress = new Uri(searchUrl);
-            client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36");
-            client.DefaultRequestHeaders.Add("Accept-Language", "en-US,en;q=0.9");
-            //client.DefaultRequestHeaders.Add("User-Agent", "Lynx/2.8.9rel.1 libwww-FM/2.14"); // Mimic a text-based browser [Still doesn't work with Google]
-            //client.DefaultRequestHeaders.Add("Accept-Language", "en-US,en;q=0.9");
-            //client.DefaultRequestHeaders.Add("Save-Data", "on"); // Request a low-bandwidth page
-        });
+        // Register HttpClients for each supported search engine
+        ConfigureSearchEngineHttpClients(services, configuration);
 
         // Add infrastructure services here
-        services.AddScoped<IScrapeService, GoogleScrapeService>();
+        services.AddScoped<IScrapeService, GenericScrapeService>();
+        services.AddScoped<IBatchScrapeService, GenericBatchScrapeService>();
         return services;
+    }
+    
+    private static void ConfigureSearchEngineHttpClients(IServiceCollection services, IConfiguration configuration)
+    {
+        // Define default search engines
+        var searchEngines = new Dictionary<string, string>
+        {
+            ["Google"] = configuration["SearchUrls:Google"] ?? "https://www.google.com/",
+            ["Bing"] = configuration["SearchUrls:Bing"] ?? "https://www.bing.com/"
+        };
+        
+        // Register an HttpClient for each search engine
+        foreach (var searchEngine in searchEngines)
+        {
+            services.AddHttpClient(searchEngine.Key, client =>
+            {
+                client.BaseAddress = new Uri(searchEngine.Value);
+                client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36");
+                client.DefaultRequestHeaders.Add("Accept-Language", "en-US,en;q=0.9");
+            });
+        }
     }
 }
