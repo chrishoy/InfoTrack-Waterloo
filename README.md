@@ -16,7 +16,7 @@ e.g. requesting results for a text-only browser, will leave you blocked by indir
 
 A quick (Yahoo and Bing Ha!) search confirmed this theory to me so I didn't pursue it further.
 
-The provided application simply returns a list of parse line matches, so if you try entering **Target URL: 'Google'** and **Keywords: 'Google'** you will get something, but try searching **'www.infotract.co.uk'** and **'land registry seraches'**, you will get nothing due to the redirection and obfuscation.
+The provided application simply returns a list of parse line matches, so if you try entering **Target URL: 'Google'** and **Keywords: 'Google'** you will get something, but try searching **'www.infotrack.co.uk'** and **'land registry searches'**, you will get nothing due to the redirection and obfuscation.
 
 ## Getting Started
 - Clone the repository
