@@ -46,7 +46,7 @@ The provided application simply returns a list of parse line matches, so if you 
 - `Waterloo.Domain` - Currently anaemic, but could contain
   1. Entities - Business Objects
   1. Value Objects - Objects that have no identity
-  1. Services - Business Logic`
+  1. Services - Business Logic
 - `Waterloo.Infrastructure` - Currently only contains infra to access Google, but could be used to genericise all HTTP requests (scrapes). Other things here would include..
   1. Data - Data Access Layer
   1. Services - External Services
