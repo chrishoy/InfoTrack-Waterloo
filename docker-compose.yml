@@ -1,0 +1,23 @@
+# docker run --name seq -d -p 5341:80 datalust/seq
+services:
+  seq:
+    container_name: seq_container
+    image: datalust/seq:latest
+    restart: always
+    ports:
+      - '5431:80'
+    volumes:
+      - seq_data:/data
+    environment:
+      ACCEPT_EULA: Y
+      # Optional: set an admin API key
+      # SEQ_API_KEY: your-admin-api-key- 
+
+volumes:
+  seq_data:
+    driver: local
+    driver_opts:
+      type: "none"
+      o: "bind"
+      device: "C:/Docker/Volumes/Seq/data" # Change this to your own physical path
+
