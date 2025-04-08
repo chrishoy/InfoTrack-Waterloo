@@ -6,6 +6,12 @@ namespace Waterloo.Web.Extensions;
 
 public static class EndpointExtensions
 {
+    /// <summary>
+    /// Locates all IEndpoint entries in assemble and adds to service collection
+    /// </summary>
+    /// <param name="services"></param>
+    /// <param name="assembly"></param>
+    /// <returns></returns>
     public static IServiceCollection AddEndpoints(this IServiceCollection services, Assembly assembly)
     {
         ServiceDescriptor[] serviceDescriptors = assembly
@@ -20,6 +26,12 @@ public static class EndpointExtensions
         return services;
     }
 
+    /// <summary>
+    /// Maps all IEndpoint registrations in service collection
+    /// </summary>
+    /// <param name="app"></param>
+    /// <param name="routeGroupBuilder"></param>
+    /// <returns></returns>
     public static IApplicationBuilder MapEndpoints(
         this WebApplication app,
         RouteGroupBuilder? routeGroupBuilder = null)

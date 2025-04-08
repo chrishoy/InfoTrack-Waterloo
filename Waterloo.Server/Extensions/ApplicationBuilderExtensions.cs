@@ -5,6 +5,7 @@ public static class ApplicationBuilderExtensions
     public static IApplicationBuilder UseSwaggerWithUi(this WebApplication app)
     {
         // This is where we'd put our builder registration points
+        //app.UseSwaggerWithUi()
         return app;
     }
 }

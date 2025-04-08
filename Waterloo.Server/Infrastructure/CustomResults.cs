@@ -4,6 +4,12 @@ namespace Waterloo.Web.Infrastructure;
 
 public static class CustomResults
 {
+    /// <summary>
+    /// Converts a Result into a structured IResult defining the Problem
+    /// </summary>
+    /// <param name="result"></param>
+    /// <returns></returns>
+    /// <exception cref="InvalidOperationException"></exception>
     public static IResult Problem(Result result)
     {
         if (result.IsSuccess)
