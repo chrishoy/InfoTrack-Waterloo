@@ -30,7 +30,7 @@ POST {{Server_HostAddress}}/scrape
 Accept: */*
 Content-Type: application/json 
 {
-  "targetUrl": "www.infotrack.co.uk",
-  "keywords": ""
+  "targetUrl": "",
+  "keywords": "land registry searches"
 }
 ###

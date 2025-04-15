@@ -35,7 +35,7 @@ The provided application simply returns a list of parse line matches, so if you 
 
 ## Project Structure
 - `Waterloo.Web` - This is the Presentation Layer - Contains
-  1. Contracts - requests/responses
+  1. Contracts - requests/responses, alongside Endpoints
   1. Endpoints - API Mapping (using Minimal API's - could be controller endpoints)
 - `Waterloo.Application` - Currently only contains Command and Handler and Validator, but could contain
   1. Commands - Commands to perform actions
